@@ -1,0 +1,28 @@
+@import 'base.scss';
+
+.component {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  hr {
+    border: 2px solid $color-primary;
+    border-radius: $border-radius;
+  }
+
+  p {
+    margin: 0;
+    width: 200px;
+  }
+}
+
+.left {
+  width: 100%;
+}
+
+.right {
+  width: 100%;
+}

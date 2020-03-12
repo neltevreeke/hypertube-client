@@ -31,7 +31,7 @@ const LoginForm = ({
           return (
             <Form>
               <Field
-                label='Email'
+                // label='Email'
                 id='email'
                 name='email'
                 type='email'
@@ -40,7 +40,7 @@ const LoginForm = ({
               />
 
               <Field
-                label='Password'
+                // label='Password'
                 id='password'
                 name='password'
                 type='password'
@@ -53,6 +53,7 @@ const LoginForm = ({
                 type='submit'
                 variant={Button.VARIANT_DEFAULT}
                 isLoading={isSubmitting}
+                className={styles.fullWidthButton}
               >
                 log in
               </Button>

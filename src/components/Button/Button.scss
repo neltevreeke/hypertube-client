@@ -13,7 +13,7 @@
   transition: background-color $transition-speed, color $transition-speed;
 
   &:hover {
-    background-color: white;
+    background-color: transparent;
     color: $color-primary;
   }
 
@@ -24,7 +24,7 @@
 }
 
 .variant--transparent-bordered {
-  border: 2px solid white;
+  border: 2px solid $color-primary;
 }
 
 .variant--default {

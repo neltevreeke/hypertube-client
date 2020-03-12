@@ -1,5 +1,12 @@
 @import 'base.scss';
 
 .component {
-  // Empty
+  padding: $padding;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centerContent {
+  width: 30%;
 }

@@ -1,0 +1,46 @@
+@import 'base.scss';
+
+$facebook-background: #4267B2;
+$linkedin-background: #0072B1;
+$fortytwo-background: #5BC0DE;
+
+.component {
+  display: flex;
+  flex-direction: column;
+}
+
+.facebook {
+  background-color: $facebook-background;
+  transition: background-color $transition-speed;
+  margin-bottom: 1rem;
+  border: none;
+
+  &:hover {
+    background-color: darken($facebook-background, 10);
+    border-color: darken($facebook-background, 10);
+    color: white;
+  }
+}
+
+.linkedin {
+  background-color: $linkedin-background;
+  border: none;
+  transition: background-color $transition-speed;
+  margin-bottom: 1rem;
+
+  &:hover {
+    background-color: darken($linkedin-background, 10);
+    color: white;
+  }
+}
+
+.fortytwo {
+  background-color: $fortytwo-background;
+  border: none;
+  transition: background-color $transition-speed;
+
+  &:hover {
+    background-color: darken($fortytwo-background, 10);
+    color: white;
+  }
+}
