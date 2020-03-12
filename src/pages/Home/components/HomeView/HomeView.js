@@ -20,6 +20,7 @@ import { login } from 'actions/user'
 const HomeView = () => {
   const dispatch = useDispatch()
   const isLogInFormLoading = useSelector(getIsLogInFormLoading)
+  // const [loginOrSignup, setLoginOrSignup] = useState(null)
 
   const handleFacebookOnClick = () => {
     // eslint-disable-next-line no-console

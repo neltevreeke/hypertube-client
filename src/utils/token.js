@@ -1,6 +1,6 @@
 import { setTokenHeader, clearTokenHeader } from './request'
 
-const TOKEN_NAMESPACE = 'matcha-token'
+const TOKEN_NAMESPACE = 'hypertube-token'
 
 export const setToken = (token) => {
   setTokenHeader(token)
