@@ -8,6 +8,24 @@ import * as ActionType from 'constants/ActionType'
 import * as Routes from 'constants/Routes'
 import * as usersApi from 'api/user'
 
+export const facebookLogin = () => async dispatch => {
+  dispatch({
+    type: ActionType.LOGIN_START
+  })
+
+  try {
+    // const user = usersApi.facebookLogin()
+
+    // console.log(user)
+
+  } catch (error) {
+    dispatch({
+      type: ActionType.LOGIN_ERROR,
+      payload: error
+    })
+  }
+}
+
 export const login = ({
   email,
   password

@@ -6,3 +6,9 @@ export const login = (loginValues) => {
     body: loginValues
   })
 }
+
+export const facebookLogin = () => {
+  return request('auth/facebook', {
+    method: 'GET'
+  })
+}

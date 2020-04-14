@@ -1,20 +1,23 @@
 import React from 'react'
 import styles from './SocialMedia.scss'
 import Button from 'components/Button/Button'
+// import {Link} from "react-router-dom";
 
 const SocialMedia = ({
-  handleFacebookOnClick,
+  // handleFacebookOnClick,
   handleLinkedInOnClick,
   handle42OnClick
 }) => {
   return (
     <div className={styles.component}>
-      <Button
-        className={styles.facebook}
-        onClick={handleFacebookOnClick}
-      >
-        facebook
-      </Button>
+      <a href='http://localhost:4000/auth/facebook'>
+        <Button
+          className={styles.facebook}
+          // onClick={handleFacebookOnClick}
+        >
+          facebook
+        </Button>
+      </a>
       <Button
         className={styles.linkedin}
         onClick={handleLinkedInOnClick}
