@@ -5,35 +5,28 @@ import Page from 'components/Page/Page'
 import LoginForm from './components/LoginForm/LoginForm'
 import Seperator from 'components/Seperator/Seperator'
 import SocialMedia from './components/SocialMedia/SocialMedia'
+import { Redirect } from 'react-router-dom'
+import * as Routes from 'constants/Routes'
 
 import {
   useDispatch,
   useSelector
 } from 'react-redux'
 
-import {
-  getIsLogInFormLoading
-} from 'selectors/user'
-
-import {
-  login
-  // facebookLogin
-} from 'actions/user'
+import { getIsLogInFormLoading, getIsLoggedIn } from 'selectors/user'
+import { login } from 'actions/user'
 
 const HomeView = () => {
   const dispatch = useDispatch()
   const isLogInFormLoading = useSelector(getIsLogInFormLoading)
+  const isLoggedIn = useSelector(getIsLoggedIn)
 
-  // const handleFacebx
-
-  const handleLinkedInOnClick = () => {
-    // eslint-disable-next-line no-console
-    console.log('LinkedIn clicked')
-  }
-
-  const handle42OnClick = () => {
-    // eslint-disable-next-line no-console
-    console.log('42 clicked')
+  if (isLoggedIn) {
+    return (
+      <Redirect
+        to={Routes.MOVIES}
+      />
+    )
   }
 
   const handleLogInFormSubmit = (values) => {
@@ -49,11 +42,7 @@ const HomeView = () => {
             isSubmitting={isLogInFormLoading}
           />
           <Seperator />
-          <SocialMedia
-            // handleFacebookOnClick={handleFacebookOnClick}
-            handleLinkedInOnClick={handleLinkedInOnClick}
-            handle42OnClick={handle42OnClick}
-          />
+          <SocialMedia />
         </div>
       </div>
     </Page>

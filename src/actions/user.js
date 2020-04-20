@@ -8,19 +8,21 @@ import * as ActionType from 'constants/ActionType'
 import * as Routes from 'constants/Routes'
 import * as usersApi from 'api/user'
 
-export const facebookLogin = () => async dispatch => {
+export const me = () => async dispatch => {
   dispatch({
-    type: ActionType.LOGIN_START
+    type: ActionType.ME_START
   })
 
   try {
-    // const user = usersApi.facebookLogin()
+    const { user } = await usersApi.me()
 
-    // console.log(user)
-
+    dispatch({
+      type: ActionType.ME_SUCCESS,
+      payload: user
+    })
   } catch (error) {
     dispatch({
-      type: ActionType.LOGIN_ERROR,
+      type: ActionType.ME_ERROR,
       payload: error
     })
   }
@@ -47,7 +49,7 @@ export const login = ({
       payload: user
     })
 
-    history.push(Routes.BROWSE)
+    history.push(Routes.MOVIES)
   } catch (error) {
     dispatch({
       type: ActionType.LOGIN_ERROR,

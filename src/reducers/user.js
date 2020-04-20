@@ -3,6 +3,11 @@ import * as ActionType from 'constants/ActionType'
 
 const initialState = {
   user: null,
+  me: {
+    isLoading: false,
+    error: null,
+    isLoaded: false
+  },
   login: {
     isLoading: false,
     error: null
@@ -10,6 +15,35 @@ const initialState = {
 }
 
 export default createReducer(initialState, {
+  [ActionType.ME_START]: (state) => {
+    return {
+      ...state,
+      me: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.ME_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      user: payload,
+      me: {
+        isLoading: false,
+        isLoaded: true
+      }
+    }
+  },
+  [ActionType.ME_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      me: {
+        isLoading: false,
+        isLoaded: true,
+        error
+      }
+    }
+  },
+
   [ActionType.LOGIN_START]: (state) => {
     return {
       ...state,

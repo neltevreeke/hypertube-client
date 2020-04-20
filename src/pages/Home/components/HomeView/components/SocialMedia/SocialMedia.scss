@@ -14,6 +14,7 @@ $fortytwo-background: #5BC0DE;
   transition: background-color $transition-speed;
   margin-bottom: 1rem;
   border: none;
+  width: 100%;
 
   &:hover {
     background-color: darken($facebook-background, 10);
@@ -27,6 +28,7 @@ $fortytwo-background: #5BC0DE;
   border: none;
   transition: background-color $transition-speed;
   margin-bottom: 1rem;
+  width: 100%;
 
   &:hover {
     background-color: darken($linkedin-background, 10);

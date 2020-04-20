@@ -2,4 +2,4 @@
 export const HOME = '/'
 
 // protected routes
-export const BROWSE = '/browse'
+export const MOVIES = '/movies'

@@ -7,8 +7,8 @@ export const login = (loginValues) => {
   })
 }
 
-export const facebookLogin = () => {
-  return request('auth/facebook', {
+export const me = () => {
+  return request('me', {
     method: 'GET'
   })
 }
