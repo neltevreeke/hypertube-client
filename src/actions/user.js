@@ -1,5 +1,5 @@
 import {
-  // getToken,
+  getToken,
   setToken
   // clearToken
 } from 'utils/token'
@@ -7,8 +7,15 @@ import {
 import * as ActionType from 'constants/ActionType'
 import * as Routes from 'constants/Routes'
 import * as usersApi from 'api/user'
+import { history } from '../utils/configureStore'
 
 export const me = () => async dispatch => {
+  const tokenFromHeader = getToken()
+
+  if (tokenFromHeader) {
+    setToken(tokenFromHeader)
+  }
+
   dispatch({
     type: ActionType.ME_START
   })
@@ -20,6 +27,8 @@ export const me = () => async dispatch => {
       type: ActionType.ME_SUCCESS,
       payload: user
     })
+
+    history.push(Routes.MOVIES)
   } catch (error) {
     dispatch({
       type: ActionType.ME_ERROR,
