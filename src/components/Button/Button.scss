@@ -27,6 +27,15 @@
   border: 2px solid $color-primary;
 }
 
+.variant--transparent-white {
+  transition: background-color $transition-speed, color $transition-speed, border $transition-speed;
+
+  &:hover {
+    border: 2px solid white;
+    background-color: white;
+  }
+}
+
 .variant--default {
   background: $color-primary;
 }

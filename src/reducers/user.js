@@ -69,5 +69,12 @@ export default createReducer(initialState, {
         error
       }
     }
+  },
+
+  [ActionType.LOGOUT]: (state) => {
+    return {
+      ...state,
+      user: null
+    }
   }
 })

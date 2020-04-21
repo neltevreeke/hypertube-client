@@ -1,7 +1,7 @@
 import {
+  clearToken,
   getToken,
   setToken
-  // clearToken
 } from 'utils/token'
 
 import * as ActionType from 'constants/ActionType'
@@ -65,4 +65,14 @@ export const login = ({
       payload: error
     })
   }
+}
+
+export const logout = () => async dispatch => {
+  clearToken()
+
+  dispatch({
+    type: ActionType.LOGOUT
+  })
+
+  history.push(Routes.HOME)
 }
