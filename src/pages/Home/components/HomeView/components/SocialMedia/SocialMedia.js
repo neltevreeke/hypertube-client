@@ -10,6 +10,11 @@ const SocialMedia = () => {
           facebook
         </Button>
       </a>
+      <a href='http://localhost:4000/auth/linkedin'>
+        <Button className={styles.linkedin}>
+          linkedin
+        </Button>
+      </a>
     </div>
   )
 }
