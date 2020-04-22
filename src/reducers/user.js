@@ -11,6 +11,10 @@ const initialState = {
   login: {
     isLoading: false,
     error: null
+  },
+  signUp: {
+    isLoading: false,
+    error: null
   }
 }
 
@@ -65,6 +69,32 @@ export default createReducer(initialState, {
     return {
       ...state,
       login: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionType.SIGNUP_START]: (state) => {
+    return {
+      ...state,
+      signUp: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.SIGNUP_SUCCESS]: (state) => {
+    return {
+      ...state,
+      signUp: {
+        isLoading: false
+      }
+    }
+  },
+  [ActionType.SIGNUP_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      signUp: {
         isLoading: false,
         error
       }

@@ -14,8 +14,15 @@ export const me = () => {
   })
 }
 
+export const signUp = (signUpValues) => {
+  return request('signup', {
+    method: 'POST',
+    body: signUpValues
+  })
+}
+
 export const authCallback = (provider, params) => {
   return request(`auth/${provider}/callback?${qs.stringify(params)}`, {
-    method: 'get'
+    method: 'GET'
   })
 }

@@ -67,6 +67,27 @@ export const login = ({
   }
 }
 
+export const signUp = (values) => async dispatch => {
+  dispatch({
+    type: ActionType.SIGNUP_START
+  })
+
+  try {
+    const { status } = await usersApi.signUp(values)
+
+    if (status === 200) {
+      dispatch({
+        type: ActionType.SIGNUP_SUCCESS
+      })
+    }
+  } catch (error) {
+    dispatch({
+      type: ActionType.SIGNUP_ERROR,
+      payload: error
+    })
+  }
+}
+
 export const logout = () => async dispatch => {
   clearToken()
 

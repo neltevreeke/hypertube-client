@@ -14,14 +14,19 @@ import {
   useSelector
 } from 'react-redux'
 
-import { getIsLogInFormLoading, getIsLoggedIn } from 'selectors/user'
-import { login } from 'actions/user'
+import {
+  getIsLogInFormLoading,
+  getIsLoggedIn,
+  getIsSignUpFormLoading
+} from 'selectors/user'
+
+import { login, signUp } from 'actions/user'
 
 const HomeView = () => {
   const dispatch = useDispatch()
   const [showSignInForm, setShowSignInForm] = useState(true)
   const isLogInFormLoading = useSelector(getIsLogInFormLoading)
-  const isSignUpFormLoading = useSelector(getIsLogInFormLoading)
+  const isSignUpFormLoading = useSelector(getIsSignUpFormLoading)
   const isLoggedIn = useSelector(getIsLoggedIn)
 
   if (isLoggedIn) {
@@ -51,10 +56,11 @@ const HomeView = () => {
   const handleSignUpFormSubmit = (values) => {
     values.displayName = values.firstName + ' ' + values.lastName
 
-    delete values.firstName
-    delete values.lastName
-
-    // dispatch(signup(values))
+    dispatch(signUp({
+      email: values.emailSignUp,
+      password: values.passwordSignUp,
+      displayName: values.displayName
+    }))
   }
 
   return (
@@ -75,12 +81,12 @@ const HomeView = () => {
               sign up
             </div>
           </div>
-          {showSignInForm
-            ? <LoginForm
+          {showSignInForm ?
+            <LoginForm
               onSubmit={handleLogInFormSubmit}
               isSubmitting={isLogInFormLoading}
-            />
-            : <SignUpForm
+            /> :
+            <SignUpForm
               onSubmit={handleSignUpFormSubmit}
               isSubmitting={isSignUpFormLoading}
             />}
