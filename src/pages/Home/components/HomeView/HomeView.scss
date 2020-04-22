@@ -10,3 +10,22 @@
 .centerContent {
   width: 30%;
 }
+
+.formControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 1.8rem;
+}
+
+.menuBtn {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border-bottom: 2px solid $color-primary;
+  border-radius: 1px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
