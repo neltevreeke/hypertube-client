@@ -15,6 +15,11 @@ const SocialMedia = () => {
           linkedin
         </Button>
       </a>
+      <a href='http://localhost:4000/auth/fortytwo'>
+        <Button className={styles.fortytwo}>
+          42
+        </Button>
+      </a>
     </div>
   )
 }
