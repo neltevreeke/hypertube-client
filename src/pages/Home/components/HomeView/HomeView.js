@@ -17,10 +17,17 @@ import {
 import {
   getIsLogInFormLoading,
   getIsLoggedIn,
-  getIsSignUpFormLoading
+  getIsSignUpFormLoading,
+  getSignUpError
 } from 'selectors/user'
 
 import { login, signUp } from 'actions/user'
+
+const getSignUpErrorMessage = (statusCode) => {
+  if (statusCode === 409) {
+    return 'Email already exists'
+  }
+}
 
 const HomeView = () => {
   const dispatch = useDispatch()
@@ -28,6 +35,7 @@ const HomeView = () => {
   const isLogInFormLoading = useSelector(getIsLogInFormLoading)
   const isSignUpFormLoading = useSelector(getIsSignUpFormLoading)
   const isLoggedIn = useSelector(getIsLoggedIn)
+  const signUpError = useSelector(getSignUpError)
 
   if (isLoggedIn) {
     return (
@@ -35,6 +43,10 @@ const HomeView = () => {
         to={Routes.MOVIES}
       />
     )
+  }
+
+  if (signUpError) {
+    signUpError.message = getSignUpErrorMessage(signUpError.statusCode)
   }
 
   const handleBtnSignInClick = () => {
@@ -89,6 +101,7 @@ const HomeView = () => {
             <SignUpForm
               onSubmit={handleSignUpFormSubmit}
               isSubmitting={isSignUpFormLoading}
+              error={signUpError}
             />}
           <Seperator />
           <SocialMedia />

@@ -14,7 +14,8 @@ const initialState = {
   },
   signUp: {
     isLoading: false,
-    error: null
+    error: null,
+    status: false
   }
 }
 
@@ -87,7 +88,8 @@ export default createReducer(initialState, {
     return {
       ...state,
       signUp: {
-        isLoading: false
+        isLoading: false,
+        status: true
       }
     }
   },

@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
   lastName: Yup.string()
     .required('Required'),
   emailSignUp: Yup.string()
-    .email()
+    .email('Invalid email')
     .required('Required'),
   passwordSignUp: Yup.string()
     .min(7, 'Too short')
@@ -105,6 +105,12 @@ const SignUpForm = ({
               >
                 sign up
               </Button>
+
+
+              {error &&
+                <div className={styles.submitError}>
+                  {error.message}
+                </div>}
             </Form>
           )
         }}
