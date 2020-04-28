@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from 'selectors/user'
 import Button from '../Button/Button'
 import { logout } from 'actions/user'
+import { history } from 'utils/configureStore'
 
 const Header = () => {
   const user = useSelector(getUser)
@@ -17,8 +18,7 @@ const Header = () => {
   }
 
   const handleBtnProfileClick = () => {
-    // eslint-disable-next-line no-console
-    console.log('redirecting to profile...')
+    history.push(Routes.PROFILE)
   }
 
   return (

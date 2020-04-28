@@ -7,6 +7,7 @@ import { history } from '../utils/configureStore'
 
 import Home from './Home'
 import Movies from './Movies'
+import Profile from './Profile'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 import AuthCallback from './AuthCallback'
 
@@ -21,6 +22,7 @@ export default (
         <Switch>
           {Home}
           {Movies}
+          {Profile}
 
           {/* Using component here instead of children gives you back the 'location' prop */}
           <Route
