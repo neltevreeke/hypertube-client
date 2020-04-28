@@ -57,6 +57,11 @@ const LoginForm = ({
               >
                 log in
               </Button>
+
+              {error &&
+                <div className={styles.submitError}>
+                  {error.message}
+                </div>}
             </Form>
           )
         }}

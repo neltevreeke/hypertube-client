@@ -18,7 +18,8 @@ import {
   getIsLogInFormLoading,
   getIsLoggedIn,
   getIsSignUpFormLoading,
-  getSignUpError
+  getSignUpError,
+  getLogInError
 } from 'selectors/user'
 
 import { login, signUp } from 'actions/user'
@@ -29,6 +30,12 @@ const getSignUpErrorMessage = (statusCode) => {
   }
 }
 
+const getLogInErrorMessage = (statusCode) => {
+  if (statusCode === 404) {
+    return 'Wrong user credentials'
+  }
+}
+
 const HomeView = () => {
   const dispatch = useDispatch()
   const [showSignInForm, setShowSignInForm] = useState(true)
@@ -36,6 +43,7 @@ const HomeView = () => {
   const isSignUpFormLoading = useSelector(getIsSignUpFormLoading)
   const isLoggedIn = useSelector(getIsLoggedIn)
   const signUpError = useSelector(getSignUpError)
+  const loginError = useSelector(getLogInError)
 
   if (isLoggedIn) {
     return (
@@ -47,6 +55,10 @@ const HomeView = () => {
 
   if (signUpError) {
     signUpError.message = getSignUpErrorMessage(signUpError.statusCode)
+  }
+
+  if (loginError) {
+    loginError.message = getLogInErrorMessage(loginError.statusCode)
   }
 
   const handleBtnSignInClick = () => {
@@ -97,6 +109,7 @@ const HomeView = () => {
             <LoginForm
               onSubmit={handleLogInFormSubmit}
               isSubmitting={isLogInFormLoading}
+              error={loginError}
             /> :
             <SignUpForm
               onSubmit={handleSignUpFormSubmit}

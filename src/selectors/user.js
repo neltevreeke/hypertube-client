@@ -1,5 +1,6 @@
 // Log in
 export const getIsLogInFormLoading = state => state.user.login.isLoading
+export const getLogInError = state => state.user.login.error
 
 // Sign up
 export const getIsSignUpFormLoading = state => state.user.signUp.isLoading
