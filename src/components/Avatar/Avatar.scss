@@ -1,0 +1,62 @@
+@import 'base.scss';
+
+.component {
+  border-radius: $border-radius;
+  position: relative;
+
+  &.empty {
+    background-color: white;
+    border: 2px solid $background-color-page;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  &.isRounded {
+    border-radius: $border-radius;
+
+    .background {
+      border-radius: $border-radius;
+    }
+  }
+
+  &.size-m {
+    $size: 200px;
+    width: $size;
+    height: $size;
+  }
+
+  &.size-s {
+    $size: 40px;
+    width: $size;
+    height: $size;
+
+    &.empty {
+      font-size: .8rem;
+    }
+
+    .onlineBullet {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.initials {
+  // This is needed, to make it pixel perfect aligned vertically
+  line-height: 1.5;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: $border-radius;
+}
+
+.empty {
+  font-size: 2rem;
+  color: $background-color-page;
+}
