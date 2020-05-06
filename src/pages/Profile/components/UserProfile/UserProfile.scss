@@ -1,10 +1,15 @@
 @import 'base.scss';
 
+.component {
+  // Empty
+}
+
 .pageHeader {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .pageTitle {
@@ -15,4 +20,30 @@
 
 .pageControls {
   margin-left: auto;
+}
+
+.sectionTitle {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 2rem;
+  margin-top: 0px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.recentlyWatchedMovies {
+  width: 50%;
+}
+
+.recentComments {
+  width: 50%;
+}
+
+.empty {
+  p {
+    margin: 0px;
+  }
 }
