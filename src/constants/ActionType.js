@@ -10,4 +10,8 @@ export const SIGNUP_START = '@user/SIGNUP_START'
 export const SIGNUP_SUCCESS = '@user/SIGNUP_SUCCESS'
 export const SIGNUP_ERROR = '@user/SIGNUP_ERROR'
 
+export const UPDATE_START = '@user/UPDATE_START'
+export const UPDATE_SUCCESS = '@user/UPDATE_SUCCESS'
+export const UPDATE_ERROR = '@user/UPDATE_ERROR'
+
 export const LOGOUT = '@user/LOGOUT'

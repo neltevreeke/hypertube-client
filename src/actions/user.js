@@ -97,3 +97,25 @@ export const logout = () => async dispatch => {
 
   history.push(Routes.HOME)
 }
+
+export const update = (values) => async dispatch => {
+  dispatch({
+    type: ActionType.UPDATE_START
+  })
+
+  try {
+    const { user } = await usersApi.update(values)
+
+    dispatch({
+      type: ActionType.UPDATE_SUCCESS,
+      payload: user
+    })
+
+    history.push(Routes.PROFILE)
+  } catch (error) {
+    dispatch({
+      type: ActionType.UPDATE_ERROR,
+      payload: error
+    })
+  }
+}

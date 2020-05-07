@@ -10,6 +10,9 @@ export const getSignUpError = state => state.user.signUp.error
 export const getMeIsLoaded = state => state.user.me.isLoaded
 export const getUser = state => state.user.user
 
+// Update
+export const getUpdateIsLoading = state => state.user.update.isLoading
+
 export const getIsLoggedIn = (state) => {
   const isMeLoaded = getMeIsLoaded(state)
   return isMeLoaded && !!state.user.user

@@ -21,6 +21,13 @@ export const signUp = (signUpValues) => {
   })
 }
 
+export const update = (values) => {
+  return request('update', {
+    method: 'POST',
+    body: values
+  })
+}
+
 export const authCallback = (provider, params) => {
   return request(`auth/${provider}/callback?${qs.stringify(params)}`, {
     method: 'GET'
