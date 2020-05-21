@@ -14,6 +14,10 @@ import {
 } from 'components/FormElements'
 
 const validationSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(3, 'Too short')
+    .max(8, 'Too long')
+    .required('Required'),
   firstName: Yup.string()
     .required('Required'),
   lastName: Yup.string()
@@ -30,6 +34,7 @@ const validationSchema = Yup.object().shape({
 })
 
 const initialValues = {
+  username: '',
   firstName: '',
   lastName: '',
   emailSignUp: '',
@@ -52,7 +57,14 @@ const SignUpForm = ({
           return (
             <Form>
               <Field
-                // label='Email'
+                id='username'
+                name='username'
+                type='text'
+                component={Input}
+                placeholder='Username'
+              />
+
+              <Field
                 id='firstName'
                 name='firstName'
                 type='text'
@@ -61,7 +73,6 @@ const SignUpForm = ({
               />
 
               <Field
-                // label='Email'
                 id='lastName'
                 name='lastName'
                 type='text'
@@ -70,7 +81,6 @@ const SignUpForm = ({
               />
 
               <Field
-                // label='Email'
                 id='emailSignUp'
                 name='emailSignUp'
                 type='email'
@@ -79,7 +89,6 @@ const SignUpForm = ({
               />
 
               <Field
-                // label='Password'
                 id='passwordSignUp'
                 name='passwordSignUp'
                 type='password'
@@ -105,7 +114,6 @@ const SignUpForm = ({
               >
                 sign up
               </Button>
-
 
               {error &&
                 <div className={styles.submitError}>

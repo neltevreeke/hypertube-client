@@ -81,6 +81,9 @@ const HomeView = () => {
     values.displayName = values.firstName + ' ' + values.lastName
 
     dispatch(signUp({
+      username: values.username,
+      firstName: values.firstName,
+      lastName: values.lastName,
       email: values.emailSignUp,
       password: values.passwordSignUp,
       displayName: values.displayName
@@ -105,13 +108,13 @@ const HomeView = () => {
               sign up
             </div>
           </div>
-          {showSignInForm ?
-            <LoginForm
+          {showSignInForm
+            ? <LoginForm
               onSubmit={handleLogInFormSubmit}
               isSubmitting={isLogInFormLoading}
               error={loginError}
-            /> :
-            <SignUpForm
+            />
+            : <SignUpForm
               onSubmit={handleSignUpFormSubmit}
               isSubmitting={isSignUpFormLoading}
               error={signUpError}

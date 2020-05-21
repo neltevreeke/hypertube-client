@@ -16,6 +16,8 @@ import {
 
 const setInitialValues = user => {
   return {
+    firstName: user.firstName,
+    lastName: user.lastName,
     logInEmail: user.logInEmail,
     email: user.email,
     username: user.username
@@ -27,6 +29,8 @@ const UpdateForm = ({
   isSubmitting,
   error
 }) => {
+  // todo: add photo upload area
+
   const user = useSelector(getUser)
   const initialValues = setInitialValues(user)
 
@@ -59,6 +63,22 @@ const UpdateForm = ({
                 label='Username'
                 id='username'
                 name='username'
+                type='text'
+                component={Input}
+              />
+
+              <Field
+                label='First name'
+                id='firstName'
+                name='firstName'
+                type='text'
+                component={Input}
+              />
+
+              <Field
+                label='Last name'
+                id='lastName'
+                name='lastName'
                 type='text'
                 component={Input}
               />

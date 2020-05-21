@@ -16,9 +16,7 @@ const getDimensionsFromSize = size => {
 }
 
 const getInitials = user => {
-  const usernameSplitted = user.username.split(' ')
-
-  return `${usernameSplitted[0][0]}${usernameSplitted[1][0]}`
+  return `${user.firstName[0]}${user.lastName[0]}`
 }
 
 const Avatar = ({
