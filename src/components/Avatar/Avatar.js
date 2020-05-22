@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Avatar.scss'
 import cx from 'classnames'
+import { getCloudinaryUrlFromPublicId } from '../../utils/cloudinary'
 
 const SIZE_S = 'size-s'
 const SIZE_M = 'size-m'
@@ -19,6 +20,21 @@ const getInitials = user => {
   return `${user.firstName[0]}${user.lastName[0]}`
 }
 
+const getProfilePicture = (profilePicture, cloudinaryPublicId, width, height) => {
+  if (profilePicture) {
+    return profilePicture
+  }
+
+  return getCloudinaryUrlFromPublicId(cloudinaryPublicId, [
+    `w_${width}`,
+    `h_${height}`,
+    'c_thumb',
+    'g_face',
+    'f_auto',
+    'q_100'
+  ])
+}
+
 const Avatar = ({
   user,
   size,
@@ -28,8 +44,9 @@ const Avatar = ({
   ...props
 }) => {
   const profilePicture = user?.profilePicture?.value
+  const cloudinaryPublicId = user?.profilePicture?.cloudinaryPublicId
 
-  if (!profilePicture) {
+  if (!profilePicture && !cloudinaryPublicId) {
     return (
       <div
         className={cx(styles.component, styles.empty, {
@@ -62,7 +79,7 @@ const Avatar = ({
           [backgroundClassName]: backgroundClassName
         })}
         style={{
-          backgroundImage: `url(${profilePicture})`,
+          backgroundImage: `url(${getProfilePicture(profilePicture, cloudinaryPublicId, width, height)})`,
           width,
           height
         }}
