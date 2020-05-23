@@ -31,7 +31,9 @@ const EditProfile = () => {
     })
 
     dispatch(update({
-      photos: cloudinaryPublicId
+      profilePicture: {
+        cloudinaryPublicId
+      }
     }))
 
     setIsUploading(false)
