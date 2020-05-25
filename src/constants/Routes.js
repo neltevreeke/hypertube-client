@@ -1,5 +1,6 @@
 // unprotected routes
 export const HOME = '/'
+export const RESET_PASSWORD = '/reset-password'
 
 // protected routes
 export const MOVIES = '/movies'

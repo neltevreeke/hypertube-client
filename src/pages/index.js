@@ -8,6 +8,7 @@ import { history } from '../utils/configureStore'
 import Home from './Home'
 import Movies from './Movies'
 import Profile from './Profile'
+import ResetPassword from './ResetPassword'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 import AuthCallback from './AuthCallback'
 
@@ -23,6 +24,7 @@ export default (
           {Home}
           {Movies}
           {Profile}
+          {ResetPassword}
 
           {/* Using component here instead of children gives you back the 'location' prop */}
           <Route

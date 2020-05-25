@@ -23,6 +23,8 @@ import {
 } from 'selectors/user'
 
 import { login, signUp } from 'actions/user'
+import Button from '../../../../components/Button/Button'
+import { history } from '../../../../utils/configureStore'
 
 const getSignUpErrorMessage = (statusCode) => {
   if (statusCode === 409) {
@@ -90,6 +92,10 @@ const HomeView = () => {
     }))
   }
 
+  const resetPasswordBtnOnClick = () => {
+    history.push(Routes.RESET_PASSWORD)
+  }
+
   return (
     <Page>
       <div className={styles.component}>
@@ -121,6 +127,14 @@ const HomeView = () => {
             />}
           <Seperator />
           <SocialMedia />
+          <Seperator />
+          <Button
+            variant={Button.VARIANT_DEFAULT}
+            onClick={resetPasswordBtnOnClick}
+            className={styles.resetPasswordBtn}
+          >
+            reset password
+          </Button>
         </div>
       </div>
     </Page>

@@ -28,6 +28,15 @@ export const update = (values) => {
   })
 }
 
+export const resetPassword = (passwordResetEmail) => {
+  return request('reset-password', {
+    method: 'POST',
+    body: {
+      passwordResetEmail
+    }
+  })
+}
+
 export const authCallback = (provider, params) => {
   return request(`auth/${provider}/callback?${qs.stringify(params)}`, {
     method: 'GET'
