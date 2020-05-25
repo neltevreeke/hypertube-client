@@ -20,6 +20,10 @@ const initialState = {
   update: {
     isLoading: false,
     error: null
+  },
+  resetPassword: {
+    isLoading: false,
+    error: null
   }
 }
 
@@ -135,6 +139,32 @@ export default createReducer(initialState, {
     return {
       ...state,
       update: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionType.RESET_PASSWORD_START]: (state) => {
+    return {
+      ...state,
+      resetPassword: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.RESET_PASSWORD_SUCCESS]: (state) => {
+    return {
+      ...state,
+      resetPassword: {
+        isLoading: false
+      }
+    }
+  },
+  [ActionType.RESET_PASSWORD_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      resetPassword: {
         isLoading: false,
         error
       }
