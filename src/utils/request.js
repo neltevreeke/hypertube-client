@@ -24,6 +24,7 @@ const request = async (urlSegment, options) => {
     ...options.headers || {}
   }
 
+  // todo: fix error when no body is being sent back (unexpected token at blabla)
   const res = await fetch(url, options)
   const jsonResponse = await res?.json() || null
 

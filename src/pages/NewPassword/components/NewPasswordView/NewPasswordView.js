@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import styles from './NewPasswordView.scss'
 import Page from 'components/Page/Page'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getParamQueryString } from 'selectors/router'
 import { history } from '../../../../utils/configureStore'
 import * as Routes from 'constants/Routes'
 import NewPasswordForm from '../NewPasswordForm/NewPasswordForm'
+import { newPassword } from 'actions/user'
 
 const NewPasswordView = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const paramQueryString = useSelector(getParamQueryString)
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const NewPasswordView = () => {
   }, [])
 
   const handleNewPasswordFormSubmit = ({ password }) => {
-    // todo: dispatch action to post password to route including getParamQueryString.token
+    dispatch(newPassword(paramQueryString.token, password))
   }
 
   return (

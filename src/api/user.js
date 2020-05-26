@@ -37,6 +37,13 @@ export const resetPassword = (passwordResetEmail) => {
   })
 }
 
+export const newPassword = (values) => {
+  return request('new-password', {
+    method: 'POST',
+    body: values
+  })
+}
+
 export const authCallback = (provider, params) => {
   return request(`auth/${provider}/callback?${qs.stringify(params)}`, {
     method: 'GET'

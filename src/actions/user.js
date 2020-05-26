@@ -138,3 +138,25 @@ export const resetPassword = (passwordResetEmail) => async dispatch => {
     })
   }
 }
+
+export const newPassword = (token, password) => async dispatch => {
+  dispatch({
+    type: ActionType.NEW_PASSWORD_START
+  })
+
+  try {
+    await usersApi.newPassword({
+      password,
+      token
+    })
+
+    dispatch({
+      type: ActionType.NEW_PASSWORD_SUCCESS
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionType.NEW_PASSWORD_ERROR,
+      payload: error
+    })
+  }
+}
