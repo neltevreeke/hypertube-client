@@ -29,8 +29,6 @@ const UpdateForm = ({
   isSubmitting,
   error
 }) => {
-  // todo: add photo upload area
-
   const user = useSelector(getUser)
   const initialValues = setInitialValues(user)
 
