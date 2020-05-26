@@ -153,6 +153,8 @@ export const newPassword = (token, password) => async dispatch => {
     dispatch({
       type: ActionType.NEW_PASSWORD_SUCCESS
     })
+
+    history.push(Routes.HOME)
   } catch (error) {
     dispatch({
       type: ActionType.NEW_PASSWORD_ERROR,
