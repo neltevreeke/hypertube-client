@@ -1,3 +1,5 @@
+// user
+
 export const LOGIN_START = '@user/LOGIN_START'
 export const LOGIN_SUCCESS = '@user/LOGIN_SUCCESS'
 export const LOGIN_ERROR = '@user/LOGIN_ERROR'
@@ -23,3 +25,9 @@ export const NEW_PASSWORD_SUCCESS = '@NEW_PASSWORD_SUCCESS'
 export const NEW_PASSWORD_ERROR = '@NEW_PASSWORD_ERROR'
 
 export const LOGOUT = '@user/LOGOUT'
+
+// movies
+
+export const GET_POPULAR_MOVIES_START = '@movie/GET_POPULAR_MOVIES_START'
+export const GET_POPULAR_MOVIES_SUCCESS = '@movie/GET_POPULAR_MOVIES_SUCCESS'
+export const GET_POPULAR_MOVIES_ERROR = '@movie/GET_POPULAR_MOVIES_ERROR'

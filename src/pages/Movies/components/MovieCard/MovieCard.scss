@@ -1,0 +1,11 @@
+@import 'base.scss';
+
+.component {
+  display: flex;
+  flex-direction: column;
+  width: 282px;
+  height: 400px;
+  background-size: cover;
+  border-radius: $border-radius;
+  margin-bottom: 2rem;
+}
