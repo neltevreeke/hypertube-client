@@ -7,6 +7,7 @@ import { history } from '../utils/configureStore'
 
 import Home from './Home'
 import Movies from './Movies'
+import MovieDetails from './MovieDetails'
 import Profile from './Profile'
 import ResetPassword from './ResetPassword'
 import NewPassword from './NewPassword'
@@ -27,6 +28,7 @@ export default (
           {Profile}
           {ResetPassword}
           {NewPassword}
+          {MovieDetails}
 
           {/* Using component here instead of children gives you back the 'location' prop */}
           <Route

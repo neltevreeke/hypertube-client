@@ -6,6 +6,11 @@ const initalState = {
     isLoading: false,
     error: null,
     movies: null
+  },
+  movieDetails: {
+    isLoading: false,
+    error: null,
+    movieDetails: null
   }
 }
 
@@ -32,6 +37,33 @@ export default createReducer(initalState, {
     return {
       ...state,
       popularMovies: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionType.GET_MOVIE_DETAILS_START]: (state) => {
+    return {
+      ...state,
+      movieDetails: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.GET_MOVIE_DETAILS_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      movieDetails: {
+        isLoading: false,
+        details: payload
+      }
+    }
+  },
+  [ActionType.GET_MOVIE_DETAILS_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      movieDetails: {
         isLoading: false,
         error
       }

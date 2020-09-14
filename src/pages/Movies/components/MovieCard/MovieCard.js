@@ -1,10 +1,19 @@
 import React from 'react'
 import styles from './MovieCard.scss'
 import Button from 'components/Button/Button'
+import { history } from 'utils/configureStore'
+import * as Routes from 'constants/Routes'
 
 const MovieCard = ({
   movie
 }) => {
+  const handleMovieDetailsBtnOnClick = id => () => {
+    history.push({
+      pathname: Routes.MOVIE_DETAILS,
+      search: `?id=${id}`
+    })
+  }
+
   return (
     <div
       style={{ backgroundImage: `url(${movie.medium_cover_image})` }}
@@ -24,6 +33,7 @@ const MovieCard = ({
         <Button
           variant={Button.VARIANT_DEFAULT}
           className={styles.btn}
+          onClick={handleMovieDetailsBtnOnClick(movie.id)}
         >
           movie details
         </Button>

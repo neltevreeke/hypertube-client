@@ -5,3 +5,9 @@ export const getMovies = () => {
     method: 'GET'
   })
 }
+
+export const getMovieDetails = (id) => {
+  return request(`movie-details/${id}`, {
+    method: 'get'
+  })
+}
