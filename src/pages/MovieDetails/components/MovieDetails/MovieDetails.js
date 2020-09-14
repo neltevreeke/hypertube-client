@@ -6,9 +6,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { history } from '../../../../utils/configureStore'
 import * as Routes from 'constants/Routes'
 import { getMovieDetails } from '../../../../actions/movies'
+import PageSpinner from 'components/PageSpinner/PageSpinner'
+import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movie'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
+  const isLoading = useSelector(getMovieDetailsIsLoading)
+  const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,10 +23,14 @@ const MovieDetails = () => {
     dispatch(getMovieDetails(query.id))
   }, [])
 
+  if (isLoading || !movieDetails) {
+    return <PageSpinner />
+  }
+
   return (
     <Page>
       <div className={styles.component}>
-        {query.id}
+        {movieDetails.title}
       </div>
     </Page>
   )
