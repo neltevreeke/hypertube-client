@@ -8,4 +8,43 @@
   background-size: cover;
   border-radius: $border-radius;
   margin-bottom: 2rem;
+
+  &:hover {
+    .content {
+      visibility: visible;
+      background-color: rgba(black, .7);
+    }
+  }
+}
+
+.content {
+  visibility: hidden;
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.year {
+  margin-top: 3rem;
+}
+
+.rating {
+  margin-top: 3rem;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.btn {
+  margin-top: auto;
 }
