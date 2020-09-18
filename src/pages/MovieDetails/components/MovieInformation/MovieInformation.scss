@@ -1,0 +1,31 @@
+@import 'base.scss';
+
+.component {
+  width: 50%;
+
+  p {
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.listTitle {
+  color: $color-primary;
+  margin-right: 1rem;
+  min-width: 90px;
+}
+
+.listBlock {
+  display: flex;
+  flex-direction: row;
+}
+
+.listItem {
+  margin-right: 1rem;
+}

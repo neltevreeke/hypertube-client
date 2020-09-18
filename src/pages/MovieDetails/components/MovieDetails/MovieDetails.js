@@ -8,7 +8,8 @@ import * as Routes from 'constants/Routes'
 import { getMovieDetails } from '../../../../actions/movies'
 import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movie'
-import Button from '../../../../components/Button/Button'
+import MovieDetailsHeading from '../MovieDetailsHeading/MovieDetailsHeading'
+import MovieInformation from '../MovieInformation/MovieInformation'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
@@ -31,27 +32,15 @@ const MovieDetails = () => {
   return (
     <Page>
       <div className={styles.component}>
-        <div className={styles.heading}>
-          <img
-            src={movieDetails.medium_cover_image}
-            className={styles.image}
+        <MovieDetailsHeading
+          coverPoster={movieDetails.medium_cover_image}
+          title={movieDetails.title_english}
+          youtubeLink={movieDetails.yt_trailer_code}
+        />
+        <div className={styles.content}>
+          <MovieInformation
+            movieDetails={movieDetails}
           />
-          <div className={styles.contentContainer}>
-            <div className={styles.title}>
-              {movieDetails.title_english}
-            </div>
-            <div>
-              <Button variant={Button.VARIANT_DEFAULT}>
-                watch trailer
-              </Button>
-              <Button
-                className={styles.btn}
-                variant={Button.VARIANT_DEFAULT}
-              >
-                watch movie
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </Page>

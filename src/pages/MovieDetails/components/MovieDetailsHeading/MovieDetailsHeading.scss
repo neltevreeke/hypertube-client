@@ -1,0 +1,35 @@
+@import 'base.scss';
+
+.component {
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  width: 100%;
+}
+
+.image {
+  width: 282px;
+  height: 400px;
+  border-radius: $border-radius;
+  flex-shrink: 0;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  justify-content: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: auto;
+  min-width: 436px;
+}
+
+.btn {
+  &:last-child {
+    margin-left: 2rem;
+  }
+}
