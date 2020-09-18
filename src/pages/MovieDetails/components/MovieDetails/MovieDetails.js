@@ -10,12 +10,14 @@ import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movie'
 import MovieDetailsHeading from '../MovieDetailsHeading/MovieDetailsHeading'
 import MovieInformation from '../MovieInformation/MovieInformation'
+import MovieComments from '../MovieComments/MovieComments'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
   const isLoading = useSelector(getMovieDetailsIsLoading)
   const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
+  const comments = [{}, {}, {}]
 
   useEffect(() => {
     if (!query) {
@@ -40,6 +42,9 @@ const MovieDetails = () => {
         <div className={styles.content}>
           <MovieInformation
             movieDetails={movieDetails}
+          />
+          <MovieComments
+            comments={comments}
           />
         </div>
       </div>
