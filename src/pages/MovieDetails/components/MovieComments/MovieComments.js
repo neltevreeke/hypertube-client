@@ -9,6 +9,11 @@ const MovieComments = ({
       <div className={styles.sectionTitle}>
         comments
       </div>
+      {comments.length > 0 ? (
+        <div>meerdere comments</div>
+      ) : (
+        <div>this movie has no comments yet</div>
+      )}
     </div>
   )
 }

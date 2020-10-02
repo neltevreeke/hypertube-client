@@ -17,7 +17,7 @@ const MovieDetails = () => {
   const isLoading = useSelector(getMovieDetailsIsLoading)
   const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
-  const comments = [{}, {}, {}]
+  const comments = [{}]
 
   useEffect(() => {
     if (!query) {

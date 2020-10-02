@@ -7,6 +7,7 @@ import { getUser } from 'selectors/user'
 import Button from '../Button/Button'
 import { logout } from 'actions/user'
 import { history } from 'utils/configureStore'
+import SearchBar from '../SearchBar/SearchBar'
 
 const Header = () => {
   const user = useSelector(getUser)
@@ -21,6 +22,10 @@ const Header = () => {
     history.push(Routes.PROFILE)
   }
 
+  const handleFormSearchSubmit = (values) => {
+
+  }
+
   return (
     <div className={styles.component}>
       <Link
@@ -32,6 +37,11 @@ const Header = () => {
 
       {isLoggedIn && (
         <div className={styles.menuControls}>
+          <SearchBar
+            onSubmit={handleFormSearchSubmit}
+            // isSubmitting={isFormSearchLoading}
+            // error={searchError}
+          />
           <Button
             onClick={handleBtnProfileClick}
             variant={Button.VARIANT_TRANSPARENT_WHITE}
