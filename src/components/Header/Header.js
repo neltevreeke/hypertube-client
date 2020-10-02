@@ -9,9 +9,11 @@ import { logout } from 'actions/user'
 import { history } from 'utils/configureStore'
 import SearchBar from '../SearchBar/SearchBar'
 import { searchMovie } from 'actions/movies'
+import { getRoute } from 'selectors/router'
 
 const Header = () => {
   const user = useSelector(getUser)
+  const route = useSelector(getRoute)
   const dispatch = useDispatch()
   const isLoggedIn = !!user
 
@@ -25,6 +27,10 @@ const Header = () => {
 
   const handleFormSearchSubmit = ({ movieTitle }) => {
     dispatch(searchMovie(movieTitle))
+
+    if (route !== Routes.MOVIES) {
+      history.push(Routes.MOVIES)
+    }
   }
 
   return (
