@@ -8,6 +8,12 @@ export const getMovies = () => {
 
 export const getMovieDetails = (id) => {
   return request(`movie-details/${id}`, {
-    method: 'get'
+    method: 'GET'
+  })
+}
+
+export const getMovieSearch = (movieTitle) => {
+  return request(`search-movie/${movieTitle}`, {
+    method: 'GET'
   })
 }

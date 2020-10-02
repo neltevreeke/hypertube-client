@@ -11,6 +11,11 @@ const initalState = {
     isLoading: false,
     error: null,
     movieDetails: null
+  },
+  movieSearch: {
+    isLoading: false,
+    error: null,
+    searchResult: null
   }
 }
 
@@ -64,6 +69,33 @@ export default createReducer(initalState, {
     return {
       ...state,
       movieDetails: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionType.MOVIE_SEARCH_START]: (state) => {
+    return {
+      ...state,
+      movieSearch: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.MOVIE_SEARCH_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      movieSearch: {
+        isLoading: false,
+        searchResult: payload
+      }
+    }
+  },
+  [ActionType.MOVIE_SEARCH_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      movieSearch: {
         isLoading: false,
         error
       }

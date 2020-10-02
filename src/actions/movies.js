@@ -40,3 +40,23 @@ export const getMovieDetails = (id) => async dispatch => {
     })
   }
 }
+
+export const searchMovie = (movieTitle) => async dispatch => {
+  dispatch({
+    type: ActionTypes.MOVIE_SEARCH_START
+  })
+
+  try {
+    const { searchResults } = await moviesApi.getMovieSearch(movieTitle)
+
+    dispatch({
+      type: ActionTypes.MOVIE_SEARCH_SUCCESS,
+      payload: searchResults
+    })
+  } catch (e) {
+    dispatch({
+      type: ActionTypes.MOVIE_SEARCH_ERROR,
+      payload: e
+    })
+  }
+}

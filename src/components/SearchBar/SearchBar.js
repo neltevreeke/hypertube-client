@@ -12,7 +12,7 @@ import {
 import Button from '../Button/Button'
 
 const initialValues = {
-  search: ''
+  movieTitle: ''
 }
 
 const SearchBar = ({
@@ -30,8 +30,8 @@ const SearchBar = ({
             <Form>
               <Field
                 // label='Search'
-                id='search'
-                name='search'
+                id='movieTitle'
+                name='movieTitle'
                 type='text'
                 component={Input}
                 placeholder='Search'

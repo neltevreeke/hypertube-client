@@ -8,6 +8,7 @@ import Button from '../Button/Button'
 import { logout } from 'actions/user'
 import { history } from 'utils/configureStore'
 import SearchBar from '../SearchBar/SearchBar'
+import { searchMovie } from 'actions/movies'
 
 const Header = () => {
   const user = useSelector(getUser)
@@ -22,8 +23,8 @@ const Header = () => {
     history.push(Routes.PROFILE)
   }
 
-  const handleFormSearchSubmit = (values) => {
-
+  const handleFormSearchSubmit = ({ movieTitle }) => {
+    dispatch(searchMovie(movieTitle))
   }
 
   return (
