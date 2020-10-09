@@ -11,11 +11,12 @@ import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movi
 import MovieDetailsHeading from '../MovieDetailsHeading/MovieDetailsHeading'
 import MovieInformation from '../MovieInformation/MovieInformation'
 import MovieComments from '../MovieComments/MovieComments'
-import { getMovieComments } from 'selectors/comment'
+import { getCommentsIsLoading, getMovieComments } from 'selectors/comment'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
   const isMovieDetailsLoading = useSelector(getMovieDetailsIsLoading)
+  const isMovieCommentsLoading = useSelector(getCommentsIsLoading)
   const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
   const comments = useSelector(getMovieComments)
@@ -28,7 +29,7 @@ const MovieDetails = () => {
     dispatch(getMovieDetails(query.id))
   }, [])
 
-  if (isMovieDetailsLoading || !movieDetails) {
+  if (isMovieDetailsLoading || isMovieCommentsLoading || !movieDetails) {
     return <PageSpinner />
   }
 

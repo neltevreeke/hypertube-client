@@ -9,3 +9,31 @@
   font-weight: bold;
   margin-bottom: 2rem;
 }
+
+.wrapper {
+  margin-bottom: 2rem;
+}
+
+.content {
+  margin-top: 1rem;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $color-primary;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.avatar {
+  margin-right: 1rem;
+}
+
+.date {
+  margin-left: auto;
+}
