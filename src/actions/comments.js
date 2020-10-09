@@ -9,8 +9,6 @@ export const placeNewMovieComment = (comment) => async dispatch => {
   try {
     const { comments } = await commentApi.postComment(comment)
 
-    // console.log(comments)
-
     dispatch({
       type: ActionType.PLACE_NEW_COMMENT_SUCCESS,
       payload: comments

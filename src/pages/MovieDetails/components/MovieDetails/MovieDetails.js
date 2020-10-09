@@ -11,13 +11,14 @@ import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movi
 import MovieDetailsHeading from '../MovieDetailsHeading/MovieDetailsHeading'
 import MovieInformation from '../MovieInformation/MovieInformation'
 import MovieComments from '../MovieComments/MovieComments'
+import { getMovieComments } from 'selectors/comment'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
   const isMovieDetailsLoading = useSelector(getMovieDetailsIsLoading)
   const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
-  // const comments = [{}]
+  const comments = useSelector(getMovieComments)
 
   useEffect(() => {
     if (!query) {
@@ -43,7 +44,9 @@ const MovieDetails = () => {
           <MovieInformation
             movieDetails={movieDetails}
           />
-          <MovieComments />
+          <MovieComments
+            comments={comments}
+          />
         </div>
       </div>
     </Page>
