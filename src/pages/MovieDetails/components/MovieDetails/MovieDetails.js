@@ -14,10 +14,10 @@ import MovieComments from '../MovieComments/MovieComments'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
-  const isLoading = useSelector(getMovieDetailsIsLoading)
+  const isMovieDetailsLoading = useSelector(getMovieDetailsIsLoading)
   const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
-  const comments = [{}]
+  // const comments = [{}]
 
   useEffect(() => {
     if (!query) {
@@ -27,7 +27,7 @@ const MovieDetails = () => {
     dispatch(getMovieDetails(query.id))
   }, [])
 
-  if (isLoading || !movieDetails) {
+  if (isMovieDetailsLoading || !movieDetails) {
     return <PageSpinner />
   }
 
@@ -43,9 +43,7 @@ const MovieDetails = () => {
           <MovieInformation
             movieDetails={movieDetails}
           />
-          <MovieComments
-            comments={comments}
-          />
+          <MovieComments />
         </div>
       </div>
     </Page>
