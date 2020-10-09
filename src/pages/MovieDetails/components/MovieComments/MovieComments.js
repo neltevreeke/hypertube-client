@@ -3,6 +3,7 @@ import styles from './MovieComments.scss'
 import NewCommentForm from '../NewCommentForm/NewCommentForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { getParamQueryString } from 'selectors/router'
+import { getCommentsIsLoading } from 'selectors/comment'
 import { placeNewMovieComment } from 'actions/comments'
 
 const MovieComments = ({
@@ -10,6 +11,7 @@ const MovieComments = ({
 }) => {
   const dispatch = useDispatch()
   const query = useSelector(getParamQueryString)
+  const isCommentsLoading = useSelector(getCommentsIsLoading)
 
   const handleNewCommentFormSubmit = ({ commentContent }) => {
     dispatch(placeNewMovieComment({
@@ -25,7 +27,7 @@ const MovieComments = ({
       </div>
       <NewCommentForm
         onSubmit={handleNewCommentFormSubmit}
-        // isSubmitting={true}
+        isSubmitting={isCommentsLoading}
       />
     </div>
   )

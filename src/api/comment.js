@@ -6,3 +6,9 @@ export const postComment = (comment) => {
     body: comment
   })
 }
+
+export const getComments = (movieId) => {
+  return request(`comment/${movieId}`, {
+    method: 'GET'
+  })
+}

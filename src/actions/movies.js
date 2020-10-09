@@ -1,5 +1,6 @@
 import * as moviesApi from 'api/movie.js'
 import * as ActionTypes from 'constants/ActionType'
+import { getMovieComments } from 'actions/comments'
 
 export const getMovies = () => async dispatch => {
   dispatch({
@@ -28,6 +29,8 @@ export const getMovieDetails = (id) => async dispatch => {
 
   try {
     const { movieDetails } = await moviesApi.getMovieDetails(id)
+
+    dispatch(getMovieComments(id))
 
     dispatch({
       type: ActionTypes.GET_MOVIE_DETAILS_SUCCESS,

@@ -35,5 +35,32 @@ export default createReducer(initialState, {
         error
       }
     }
+  },
+
+  [ActionType.GET_COMMENT_START]: (state) => {
+    return {
+      ...state,
+      comments: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.GET_COMMENT_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      comments: {
+        isLoading: false,
+        comments: payload
+      }
+    }
+  },
+  [ActionType.GET_COMMENT_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      comments: {
+        isLoading: false,
+        error
+      }
+    }
   }
 })
