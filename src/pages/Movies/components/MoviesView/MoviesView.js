@@ -3,28 +3,27 @@ import styles from './MoviesView.scss'
 import Page from '../../../../components/Page/Page'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from 'actions/movies.js'
-import { getPopularMovies, getPopularMoviesIsLoading, getMovieSearchResult } from 'selectors/movie'
+import { getBrowseMovies, getBrowseMoviesIsLoading } from 'selectors/movie'
 import PageSpinner from '../../../../components/PageSpinner/PageSpinner'
 import MovieCards from '../MovieCards/MovieCards'
 
 const MoviesView = () => {
   const dispatch = useDispatch()
-  const popularMovies = useSelector(getPopularMovies)
-  const searchMovies = useSelector(getMovieSearchResult)
-  const isLoading = useSelector(getPopularMoviesIsLoading)
+  const browseMovies = useSelector(getBrowseMovies)
+  const isLoading = useSelector(getBrowseMoviesIsLoading)
 
   useEffect(() => {
     dispatch(getMovies())
   }, [])
 
-  if (isLoading || !popularMovies) {
+  if (isLoading || !browseMovies) {
     return <PageSpinner />
   }
 
   return (
     <Page>
       <div className={styles.component}>
-        <MovieCards movies={searchMovies || popularMovies} />
+        <MovieCards movies={browseMovies} />
       </div>
     </Page>
   )

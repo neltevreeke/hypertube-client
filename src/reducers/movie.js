@@ -2,7 +2,7 @@ import { createReducer } from '../utils/redux'
 import * as ActionType from 'constants/ActionType'
 
 const initalState = {
-  popularMovies: {
+  browseMovies: {
     isLoading: false,
     error: null,
     movies: null
@@ -23,7 +23,7 @@ export default createReducer(initalState, {
   [ActionType.GET_POPULAR_MOVIES_START]: (state) => {
     return {
       ...state,
-      popularMovies: {
+      browseMovies: {
         isLoading: true
       }
     }
@@ -31,7 +31,7 @@ export default createReducer(initalState, {
   [ActionType.GET_POPULAR_MOVIES_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      popularMovies: {
+      browseMovies: {
         isLoading: false,
         movies: payload,
         error: null
@@ -41,7 +41,7 @@ export default createReducer(initalState, {
   [ActionType.GET_POPULAR_MOVIES_ERROR]: (state, { payload: error }) => {
     return {
       ...state,
-      popularMovies: {
+      browseMovies: {
         isLoading: false,
         error
       }
@@ -78,7 +78,7 @@ export default createReducer(initalState, {
   [ActionType.MOVIE_SEARCH_START]: (state) => {
     return {
       ...state,
-      movieSearch: {
+      browseMovies: {
         isLoading: true
       }
     }
@@ -86,16 +86,16 @@ export default createReducer(initalState, {
   [ActionType.MOVIE_SEARCH_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      movieSearch: {
+      browseMovies: {
         isLoading: false,
-        searchResult: payload
+        movies: payload
       }
     }
   },
   [ActionType.MOVIE_SEARCH_ERROR]: (state, { payload: error }) => {
     return {
       ...state,
-      movieSearch: {
+      browseMovies: {
         isLoading: false,
         error
       }
