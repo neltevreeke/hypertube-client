@@ -62,5 +62,32 @@ export default createReducer(initialState, {
         error
       }
     }
+  },
+
+  [ActionType.DELETE_COMMENT_START]: (state) => {
+    return {
+      ...state,
+      comments: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionType.DELETE_COMMENT_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      comments: {
+        isLoading: false,
+        comments: payload
+      }
+    }
+  },
+  [ActionType.DELETE_COMMENT_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      comments: {
+        isLoading: false,
+        error
+      }
+    }
   }
 })

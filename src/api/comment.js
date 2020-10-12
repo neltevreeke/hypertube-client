@@ -12,3 +12,18 @@ export const getComments = (movieId) => {
     method: 'GET'
   })
 }
+
+export const deleteComment = (deletedComment) => {
+  const {
+    movieId,
+    commentId
+  } = deletedComment
+
+  return request('comment', {
+    method: 'DELETE',
+    body: {
+      movieId,
+      commentId
+    }
+  })
+}

@@ -40,3 +40,23 @@ export const getMovieComments = (movieId) => async dispatch => {
     })
   }
 }
+
+export const deleteMovieComment = (deletedComment) => async dispatch => {
+  dispatch({
+    type: ActionType.DELETE_COMMENT_START
+  })
+
+  try {
+    const { comments } = await commentApi.deleteComment(deletedComment)
+
+    dispatch({
+      type: ActionType.DELETE_COMMENT_SUCCESS,
+      payload: comments
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionType.DELETE_COMMENT_ERROR,
+      payload: error
+    })
+  }
+}

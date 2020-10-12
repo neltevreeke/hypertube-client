@@ -20,7 +20,7 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   commentContent: Yup.string()
     .min(2, 'Too short!')
-    .max(100, 'Too long!')
+    .max(75, 'Too long!')
     .required('Required')
 })
 

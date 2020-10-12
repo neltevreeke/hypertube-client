@@ -11,12 +11,12 @@ import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movi
 import MovieDetailsHeading from '../MovieDetailsHeading/MovieDetailsHeading'
 import MovieInformation from '../MovieInformation/MovieInformation'
 import MovieComments from '../MovieComments/MovieComments'
-import { getCommentsIsLoading, getMovieComments } from 'selectors/comment'
+import { getMovieCommentsIsLoading, getMovieComments } from 'selectors/comment'
 
 const MovieDetails = () => {
   const query = useSelector(getParamQueryString)
   const isMovieDetailsLoading = useSelector(getMovieDetailsIsLoading)
-  const isMovieCommentsLoading = useSelector(getCommentsIsLoading)
+  const isMovieCommentsLoading = useSelector(getMovieCommentsIsLoading)
   const movieDetails = useSelector(getMovieDetailsDetails)
   const dispatch = useDispatch()
   const comments = useSelector(getMovieComments)
