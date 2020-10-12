@@ -36,10 +36,11 @@ const CommentBubble = ({
         </p>
         {isOwner && (
           <div>
-            <FontAwesomeIcon
-              className={styles.controlIcon}
-              icon='pen'
-            />
+            {/*  todo: Not necessary but fun, editing comment content  */}
+            {/* <FontAwesomeIcon */}
+            {/*  className={styles.controlIcon} */}
+            {/*  icon='pen' */}
+            {/* /> */}
             <FontAwesomeIcon
               className={styles.controlIcon}
               icon='times-circle'
