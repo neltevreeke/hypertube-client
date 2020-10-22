@@ -60,3 +60,23 @@ export const deleteMovieComment = (deletedComment) => async dispatch => {
     })
   }
 }
+
+export const editMovieComment = (editedComment) => async dispatch => {
+  dispatch({
+    type: ActionType.EDIT_COMMENT_START
+  })
+
+  try {
+    const { comments } = await commentApi.editComment(editedComment)
+
+    dispatch({
+      type: ActionType.EDIT_COMMENT_SUCCESS,
+      payload: comments
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionType.EDIT_COMMENT_ERROR,
+      payload: error
+    })
+  }
+}

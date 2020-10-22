@@ -26,7 +26,7 @@ const MovieComments = ({
       <div className={styles.sectionTitle}>
         comments
       </div>
-      {comments.length > 0 ? comments.map((comment, index) => {
+      {comments && comments.length > 0 ? comments.map((comment, index) => {
         return <CommentBubble
           key={index}
           comment={comment}

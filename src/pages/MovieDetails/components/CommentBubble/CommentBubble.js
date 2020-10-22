@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './CommentBubble.scss'
 import Avatar from '../../../../components/Avatar/Avatar'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../../../selectors/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { deleteMovieComment } from 'actions/comments'
+import { deleteMovieComment, editMovieComment } from 'actions/comments'
+import EditCommentForm from '../EditCommentForm/EditCommentForm'
 
 const CommentBubble = ({
   comment
@@ -14,11 +15,28 @@ const CommentBubble = ({
   const mDate = moment.utc(comment.createdOn)
   const isOwner = comment.userId._id === user._id
   const dispatch = useDispatch()
+  const [isEditing, setIsEditing] = useState(false)
 
-  const handleDeleteClick = (commentId, movieId) => () => {
+  const handleDeleteClick = (movieId) => () => {
     dispatch(deleteMovieComment({
-      commentId,
+      commentId: comment._id,
       movieId
+    }))
+  }
+
+  const handleEditClick = () => {
+    if (!isEditing) {
+      setIsEditing(true)
+    } else {
+      setIsEditing(false)
+    }
+  }
+
+  const handleEditCommentFormSubmit = ({ commentContent }) => {
+    dispatch(editMovieComment({
+      commentId: comment._id,
+      movieId: comment.movieId,
+      commentContent: commentContent
     }))
   }
 
@@ -36,11 +54,11 @@ const CommentBubble = ({
         </p>
         {isOwner && (
           <div>
-            {/*  todo: Not necessary but fun, editing comment content  */}
-            {/* <FontAwesomeIcon */}
-            {/*  className={styles.controlIcon} */}
-            {/*  icon='pen' */}
-            {/* /> */}
+            <FontAwesomeIcon
+              className={styles.controlIcon}
+              icon='pen'
+              onClick={handleEditClick}
+            />
             <FontAwesomeIcon
               className={styles.controlIcon}
               icon='times-circle'
@@ -50,7 +68,15 @@ const CommentBubble = ({
         )}
       </div>
       <div className={styles.content}>
-        {comment.content}
+        {isEditing ? (
+          <EditCommentForm
+            onSubmit={handleEditCommentFormSubmit}
+          />
+        ) : (
+          <div>
+            {comment.content}
+          </div>
+        )}
       </div>
     </div>
   )

@@ -27,3 +27,19 @@ export const deleteComment = (deletedComment) => {
     }
   })
 }
+
+export const editComment = (editedComment) => {
+  const {
+    commentId,
+    commentContent,
+    movieId
+  } = editedComment
+
+  return request(`comment/${commentId}`, {
+    method: 'PUT',
+    body: {
+      movieId,
+      commentContent
+    }
+  })
+}
