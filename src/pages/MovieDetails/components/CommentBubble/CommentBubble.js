@@ -8,6 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { deleteMovieComment, editMovieComment } from 'actions/comments'
 import EditCommentForm from '../EditCommentForm/EditCommentForm'
 
+const getInitialValuesFromComment = (comment) => {
+  return {
+    commentContent: comment.content
+  }
+}
+
 const CommentBubble = ({
   comment
 }) => {
@@ -16,6 +22,7 @@ const CommentBubble = ({
   const isOwner = comment.userId._id === user._id
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
+  const initialValues = getInitialValuesFromComment(comment)
 
   const handleDeleteClick = (movieId) => () => {
     dispatch(deleteMovieComment({
@@ -71,6 +78,7 @@ const CommentBubble = ({
         {isEditing ? (
           <EditCommentForm
             onSubmit={handleEditCommentFormSubmit}
+            initialValues={initialValues}
           />
         ) : (
           <div>

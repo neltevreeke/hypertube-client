@@ -13,10 +13,6 @@ import {
 } from 'components/FormElements'
 import Button from 'components/Button/Button'
 
-const initialValues = {
-  commentContent: ''
-}
-
 const validationSchema = Yup.object().shape({
   commentContent: Yup.string()
     .min(2, 'Too short!')
@@ -26,7 +22,8 @@ const validationSchema = Yup.object().shape({
 
 const EditCommentForm = ({
   onSubmit,
-  isSubmitting
+  isSubmitting,
+  initialValues
 }) => {
   return (
     <div className={styles.component}>
@@ -43,6 +40,7 @@ const EditCommentForm = ({
                 name='commentContent'
                 type='text'
                 placeholder='Place a new comment'
+                autoFocus
                 component={Input}
               />
 
