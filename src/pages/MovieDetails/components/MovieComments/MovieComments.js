@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './MovieComments.scss'
 import NewCommentForm from '../NewCommentForm/NewCommentForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { getParamQueryString } from 'selectors/router'
 import { getMovieCommentsIsLoading } from 'selectors/comment'
-import { placeNewMovieComment } from 'actions/comments'
+import { deleteMovieComment, placeNewMovieComment } from 'actions/comments'
 import CommentBubble from '../CommentBubble/CommentBubble'
 
 const MovieComments = ({
@@ -13,12 +13,28 @@ const MovieComments = ({
   const dispatch = useDispatch()
   const query = useSelector(getParamQueryString)
   const isCommentsLoading = useSelector(getMovieCommentsIsLoading)
+  const [isEditing, setIsEditing] = useState(null)
 
   const handleNewCommentFormSubmit = ({ commentContent }) => {
     dispatch(placeNewMovieComment({
       movieId: query.id,
       content: commentContent
     }))
+  }
+
+  const handleDeleteClick = (comment) => () => {
+    dispatch(deleteMovieComment({
+      commentId: comment._id,
+      movieId: comment.movieId
+    }))
+  }
+
+  const handleEditClick = (commentId) => () => {
+    if (!isEditing) {
+      setIsEditing(commentId)
+    } else {
+      setIsEditing(null)
+    }
   }
 
   return (
@@ -30,6 +46,9 @@ const MovieComments = ({
         return <CommentBubble
           key={index}
           comment={comment}
+          onEdit={handleEditClick(comment._id)}
+          isEditing={isEditing}
+          onDelete={handleDeleteClick(comment)}
         />
       }) : (
         <p>This movie does not have any comments yet...</p>

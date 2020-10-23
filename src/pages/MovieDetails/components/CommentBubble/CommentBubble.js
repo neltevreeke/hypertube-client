@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './CommentBubble.scss'
 import Avatar from '../../../../components/Avatar/Avatar'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../../../selectors/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { deleteMovieComment, editMovieComment } from 'actions/comments'
+import { editMovieComment } from 'actions/comments'
 import EditCommentForm from '../EditCommentForm/EditCommentForm'
 
 const getInitialValuesFromComment = (comment) => {
@@ -15,29 +15,16 @@ const getInitialValuesFromComment = (comment) => {
 }
 
 const CommentBubble = ({
-  comment
+  comment,
+  onDelete,
+  onEdit,
+  isEditing
 }) => {
   const user = useSelector(getUser)
   const mDate = moment.utc(comment.createdOn)
   const isOwner = comment.userId._id === user._id
   const dispatch = useDispatch()
-  const [isEditing, setIsEditing] = useState(false)
   const initialValues = getInitialValuesFromComment(comment)
-
-  const handleDeleteClick = (movieId) => () => {
-    dispatch(deleteMovieComment({
-      commentId: comment._id,
-      movieId
-    }))
-  }
-
-  const handleEditClick = () => {
-    if (!isEditing) {
-      setIsEditing(true)
-    } else {
-      setIsEditing(false)
-    }
-  }
 
   const handleEditCommentFormSubmit = ({ commentContent }) => {
     dispatch(editMovieComment({
@@ -64,18 +51,18 @@ const CommentBubble = ({
             <FontAwesomeIcon
               className={styles.controlIcon}
               icon='pen'
-              onClick={handleEditClick}
+              onClick={onEdit}
             />
             <FontAwesomeIcon
               className={styles.controlIcon}
               icon='times-circle'
-              onClick={handleDeleteClick(comment._id, comment.movieId)}
+              onClick={onDelete}
             />
           </div>
         )}
       </div>
       <div className={styles.content}>
-        {isEditing ? (
+        {isEditing === comment._id ? (
           <EditCommentForm
             onSubmit={handleEditCommentFormSubmit}
             initialValues={initialValues}
