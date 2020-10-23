@@ -2,10 +2,9 @@ import React from 'react'
 import styles from './CommentBubble.scss'
 import Avatar from '../Avatar/Avatar'
 import moment from 'moment'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getUser } from '../../selectors/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { editMovieComment } from 'actions/comments'
 import EditCommentForm from '../EditCommentForm/EditCommentForm'
 
 const getInitialValuesFromComment = (comment) => {
@@ -18,21 +17,13 @@ const CommentBubble = ({
   comment,
   onDelete,
   onEdit,
-  isEditing
+  isEditing,
+  handleEditFormSubmit
 }) => {
   const user = useSelector(getUser)
   const mDate = moment.utc(comment.createdOn)
   const isOwner = comment.userId._id === user._id
-  const dispatch = useDispatch()
   const initialValues = getInitialValuesFromComment(comment)
-
-  const handleEditCommentFormSubmit = ({ commentContent }) => {
-    dispatch(editMovieComment({
-      commentId: comment._id,
-      movieId: comment.movieId,
-      commentContent: commentContent
-    }))
-  }
 
   return (
     <div className={styles.component}>
@@ -64,7 +55,7 @@ const CommentBubble = ({
       <div className={styles.content}>
         {isEditing === comment._id ? (
           <EditCommentForm
-            onSubmit={handleEditCommentFormSubmit}
+            onSubmit={handleEditFormSubmit}
             initialValues={initialValues}
           />
         ) : (

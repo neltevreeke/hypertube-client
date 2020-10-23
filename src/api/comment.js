@@ -1,5 +1,11 @@
 import request from 'utils/request'
 
+export const getUserComments = (userId) => {
+  return request(`comment/user/${userId}`, {
+    method: 'GET'
+  })
+}
+
 export const postComment = (comment) => {
   return request('comment', {
     method: 'POST',

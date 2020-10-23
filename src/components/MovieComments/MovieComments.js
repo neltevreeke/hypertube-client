@@ -4,7 +4,7 @@ import NewCommentForm from '../../pages/MovieDetails/components/NewCommentForm/N
 import { useDispatch, useSelector } from 'react-redux'
 import { getParamQueryString } from 'selectors/router'
 import { getMovieCommentsIsLoading } from 'selectors/comment'
-import { deleteMovieComment, placeNewMovieComment } from 'actions/comments'
+import { deleteMovieComment, editMovieComment, placeNewMovieComment } from 'actions/comments'
 import CommentBubble from '../CommentBubble/CommentBubble'
 
 const MovieComments = ({
@@ -31,7 +31,7 @@ const MovieComments = ({
     }))
   }
 
-  const handleEditClick = (commentId) => () => {
+  const handleEditOnClick = (commentId) => () => {
     if (!isEditing) {
       setIsEditing(commentId)
     } else {
@@ -39,18 +39,24 @@ const MovieComments = ({
     }
   }
 
+  const handleEditCommentFormSubmit = (comment) => ({ commentContent }) => {
+    dispatch(editMovieComment({
+      commentId: comment._id,
+      movieId: comment.movieId,
+      commentContent: commentContent
+    }))
+  }
+
   return (
     <div className={styles.component}>
-      <div className={styles.sectionTitle}>
-        comments
-      </div>
       {comments && comments.length > 0 ? comments.map((comment, index) => {
         return <CommentBubble
           key={index}
           comment={comment}
-          onEdit={handleEditClick(comment._id)}
+          onEdit={handleEditOnClick(comment._id)}
           isEditing={isEditing}
           onDelete={handleDeleteClick(comment)}
+          handleEditFormSubmit={handleEditCommentFormSubmit(comment)}
         />
       }) : (
         <p>This movie does not have any comments yet...</p>

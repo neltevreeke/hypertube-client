@@ -42,13 +42,19 @@ const MovieDetails = () => {
           youtubeLink={movieDetails.yt_trailer_code}
         />
         <div className={styles.content}>
-          <MovieInformation
-            movieDetails={movieDetails}
-          />
-          <MovieComments
-            comments={comments}
-            movieTitle={movieDetails.title_english}
-          />
+          <div className={styles.movieInformation}>
+            <p className={styles.sectionTitle}>movie details</p>
+            <MovieInformation
+              movieDetails={movieDetails}
+            />
+          </div>
+          <div className={styles.recentComments}>
+            <p className={styles.sectionTitle}>recent comments</p>
+            <MovieComments
+              comments={comments}
+              movieTitle={movieDetails.title_english}
+            />
+          </div>
         </div>
       </div>
     </Page>
