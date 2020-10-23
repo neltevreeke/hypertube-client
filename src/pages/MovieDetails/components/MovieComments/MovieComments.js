@@ -8,7 +8,8 @@ import { deleteMovieComment, placeNewMovieComment } from 'actions/comments'
 import CommentBubble from '../CommentBubble/CommentBubble'
 
 const MovieComments = ({
-  comments
+  comments,
+  movieTitle
 }) => {
   const dispatch = useDispatch()
   const query = useSelector(getParamQueryString)
@@ -18,7 +19,8 @@ const MovieComments = ({
   const handleNewCommentFormSubmit = ({ commentContent }) => {
     dispatch(placeNewMovieComment({
       movieId: query.id,
-      content: commentContent
+      content: commentContent,
+      movieTitle
     }))
   }
 
