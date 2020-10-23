@@ -10,7 +10,7 @@ import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { getMovieDetailsIsLoading, getMovieDetailsDetails } from 'selectors/movie'
 import MovieDetailsHeading from '../MovieDetailsHeading/MovieDetailsHeading'
 import MovieInformation from '../MovieInformation/MovieInformation'
-import MovieComments from '../MovieComments/MovieComments'
+import MovieComments from '../../../../components/MovieComments/MovieComments'
 import { getMovieCommentsIsLoading, getMovieComments } from 'selectors/comment'
 
 const MovieDetails = () => {

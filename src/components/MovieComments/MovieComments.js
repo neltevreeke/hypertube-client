@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './MovieComments.scss'
-import NewCommentForm from '../NewCommentForm/NewCommentForm'
+import NewCommentForm from '../../pages/MovieDetails/components/NewCommentForm/NewCommentForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { getParamQueryString } from 'selectors/router'
 import { getMovieCommentsIsLoading } from 'selectors/comment'
