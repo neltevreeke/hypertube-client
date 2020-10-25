@@ -15,9 +15,6 @@ const MovieInformation = ({
 
   return (
     <div className={styles.component}>
-      <div className={styles.sectionTitle}>
-        movie information
-      </div>
       <div className={styles.information}>
         <div className={styles.listBlock}>
           <p className={styles.listTitle}>genre:</p>

@@ -9,7 +9,8 @@ import CommentBubble from '../CommentBubble/CommentBubble'
 
 const MovieComments = ({
   comments,
-  movieTitle
+  movieTitle,
+  showNewCommentForm = false
 }) => {
   const dispatch = useDispatch()
   const query = useSelector(getParamQueryString)
@@ -61,10 +62,11 @@ const MovieComments = ({
       }) : (
         <p>This movie does not have any comments yet...</p>
       )}
-      <NewCommentForm
-        onSubmit={handleNewCommentFormSubmit}
-        isSubmitting={isCommentsLoading}
-      />
+      {showNewCommentForm &&
+        <NewCommentForm
+          onSubmit={handleNewCommentFormSubmit}
+          isSubmitting={isCommentsLoading}
+        />}
     </div>
   )
 }

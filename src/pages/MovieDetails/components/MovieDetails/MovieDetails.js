@@ -53,6 +53,7 @@ const MovieDetails = () => {
             <MovieComments
               comments={comments}
               movieTitle={movieDetails.title_english}
+              showNewCommentForm
             />
           </div>
         </div>
