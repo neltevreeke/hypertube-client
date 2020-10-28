@@ -7,7 +7,7 @@ const MovieCards = ({
 }) => {
   return (
     <div className={styles.component}>
-      {movies.map((movie, index) => {
+      {movies && movies.map((movie, index) => {
         return <MovieCard
           movie={movie}
           key={index}

@@ -3,27 +3,34 @@ import styles from './MoviesView.scss'
 import Page from '../../../../components/Page/Page'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from 'actions/movies.js'
-import { getBrowseMovies, getBrowseMoviesIsLoading } from 'selectors/movie'
+import { getBrowseMovies, getBrowseMoviesIsLoading, getBrowseMoviesError } from 'selectors/movie'
 import PageSpinner from '../../../../components/PageSpinner/PageSpinner'
 import MovieCards from '../MovieCards/MovieCards'
 
 const MoviesView = () => {
   const dispatch = useDispatch()
   const browseMovies = useSelector(getBrowseMovies)
+  const browseMoviesError = useSelector(getBrowseMoviesError)
   const isLoading = useSelector(getBrowseMoviesIsLoading)
 
   useEffect(() => {
-    dispatch(getMovies())
+    if (!isLoading) {
+      dispatch(getMovies())
+    }
   }, [])
 
-  if (isLoading || !browseMovies) {
+  if (isLoading) {
     return <PageSpinner />
   }
 
   return (
     <Page>
       <div className={styles.component}>
-        <MovieCards movies={browseMovies} />
+        {browseMoviesError ? (
+          <p>No movies or users have been found...</p>
+        ) : (
+          <MovieCards movies={browseMovies} />
+        )}
       </div>
     </Page>
   )
