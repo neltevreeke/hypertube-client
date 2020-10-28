@@ -35,13 +35,22 @@ export const deleteComment = (deletedComment) => {
 }
 
 export const editComment = (editedComment) => {
+  let url
+
   const {
     commentId,
     commentContent,
-    movieId
+    movieId,
+    userId
   } = editedComment
 
-  return request(`comment/${commentId}`, {
+  if (!userId) {
+    url = `comment/${commentId}`
+  } else {
+    url = `comment/${commentId}/${userId}`
+  }
+
+  return request(url, {
     method: 'PUT',
     body: {
       movieId,

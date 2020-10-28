@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import styles from './MovieComments.scss'
 import NewCommentForm from '../../pages/MovieDetails/components/NewCommentForm/NewCommentForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { getParamQueryString } from 'selectors/router'
+import { getParamQueryString, getRoute } from 'selectors/router'
 import { getMovieCommentsIsLoading } from 'selectors/comment'
 import { deleteMovieComment, editMovieComment, placeNewMovieComment } from 'actions/comments'
 import CommentBubble from '../CommentBubble/CommentBubble'
+import { getUser } from '../../selectors/user'
+import * as Routes from 'constants/Routes'
 
 const MovieComments = ({
   comments,
@@ -16,6 +18,8 @@ const MovieComments = ({
   const query = useSelector(getParamQueryString)
   const isCommentsLoading = useSelector(getMovieCommentsIsLoading)
   const [isEditing, setIsEditing] = useState(null)
+  const user = useSelector(getUser)
+  const route = useSelector(getRoute)
 
   const handleNewCommentFormSubmit = ({ commentContent }) => {
     dispatch(placeNewMovieComment({
@@ -41,11 +45,17 @@ const MovieComments = ({
   }
 
   const handleEditCommentFormSubmit = (comment) => ({ commentContent }) => {
-    dispatch(editMovieComment({
+    const editedComment = {
       commentId: comment._id,
       movieId: comment.movieId,
       commentContent: commentContent
-    }))
+    }
+
+    if (route === Routes.PROFILE) {
+      editedComment.userId = user._id
+    }
+
+    dispatch(editMovieComment(editedComment))
   }
 
   return (
