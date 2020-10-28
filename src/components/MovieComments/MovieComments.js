@@ -31,10 +31,16 @@ const MovieComments = ({
   }
 
   const handleDeleteClick = (comment) => () => {
-    dispatch(deleteMovieComment({
+    const deletedComment = {
       commentId: comment._id,
       movieId: comment.movieId
-    }))
+    }
+
+    if (route === Routes.PROFILE) {
+      deletedComment.userId = user._id
+    }
+
+    dispatch(deleteMovieComment(deletedComment))
   }
 
   const handleEditOnClick = (commentId) => () => {

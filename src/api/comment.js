@@ -20,12 +20,21 @@ export const getComments = (movieId) => {
 }
 
 export const deleteComment = (deletedComment) => {
+  let url
+
   const {
     movieId,
-    commentId
+    commentId,
+    userId
   } = deletedComment
 
-  return request('comment', {
+  if (!userId) {
+    url = `comment/${commentId}`
+  } else {
+    url = `comment/${commentId}/${userId}`
+  }
+
+  return request(url, {
     method: 'DELETE',
     body: {
       movieId,
