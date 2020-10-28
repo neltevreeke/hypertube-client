@@ -12,7 +12,8 @@ import * as Routes from 'constants/Routes'
 const MovieComments = ({
   comments,
   movieTitle,
-  showNewCommentForm = false
+  showNewCommentForm = false,
+  showMovieTitle = false
 }) => {
   const dispatch = useDispatch()
   const query = useSelector(getParamQueryString)
@@ -68,6 +69,7 @@ const MovieComments = ({
           isEditing={isEditing}
           onDelete={handleDeleteClick(comment)}
           handleEditFormSubmit={handleEditCommentFormSubmit(comment)}
+          showMovieTitle={showMovieTitle}
         />
       }) : (
         <p>This movie does not have any comments yet...</p>

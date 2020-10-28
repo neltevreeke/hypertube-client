@@ -32,3 +32,14 @@
   cursor: pointer;
   margin-left: 1rem;
 }
+
+.movieTitle {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: $color-primary;
+
+  max-width: 230px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

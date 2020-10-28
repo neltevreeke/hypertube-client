@@ -57,6 +57,7 @@ const UserProfile = () => {
           <p className={styles.sectionTitle}>recent comments</p>
           <MovieComments
             comments={recentComments}
+            showMovieTitle
           />
         </div>
       </div>

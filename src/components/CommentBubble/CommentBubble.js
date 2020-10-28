@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux'
 import { getUser } from '../../selectors/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import EditCommentForm from '../EditCommentForm/EditCommentForm'
+import { Link } from 'react-router-dom'
+import * as Routes from 'constants/Routes'
 
 const getInitialValuesFromComment = (comment) => {
   return {
@@ -18,7 +20,8 @@ const CommentBubble = ({
   onDelete,
   onEdit,
   isEditing,
-  handleEditFormSubmit
+  handleEditFormSubmit,
+  showMovieTitle
 }) => {
   const user = useSelector(getUser)
   const mDate = moment.utc(comment.createdOn)
@@ -33,7 +36,14 @@ const CommentBubble = ({
           user={comment.userId}
           size={Avatar.SIZE_S}
         />
-        <p>{comment.userId.displayName}</p>
+        <p>{comment.userId.displayName} </p>
+        {showMovieTitle &&
+          <Link
+            to={`${Routes.MOVIE_DETAILS}?id=${comment.movieId}`}
+            className={styles.movieTitle}
+          >
+            {comment.movieTitle}
+          </Link>}
         <p className={styles.date}>
           {mDate.format('dddd, MMMM Do YYYY')}
         </p>
