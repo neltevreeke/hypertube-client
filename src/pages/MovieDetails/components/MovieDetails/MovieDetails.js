@@ -40,6 +40,7 @@ const MovieDetails = () => {
           coverPoster={movieDetails.medium_cover_image}
           title={movieDetails.title_english}
           youtubeLink={movieDetails.yt_trailer_code}
+          torrents={movieDetails.torrents}
         />
         <div className={styles.content}>
           <div className={styles.movieInformation}>

@@ -4,12 +4,14 @@ import {
   faSearch,
   faCamera,
   faTimesCircle,
-  faPen
+  faPen,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faSearch,
   faCamera,
   faTimesCircle,
-  faPen
+  faPen,
+  faTimes
 )
