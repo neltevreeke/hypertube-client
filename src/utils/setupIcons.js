@@ -5,7 +5,8 @@ import {
   faCamera,
   faTimesCircle,
   faPen,
-  faTimes
+  faTimes,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -13,5 +14,6 @@ library.add(
   faCamera,
   faTimesCircle,
   faPen,
-  faTimes
+  faTimes,
+  faDownload
 )

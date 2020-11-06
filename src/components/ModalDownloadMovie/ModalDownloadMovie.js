@@ -6,6 +6,10 @@ const ModalDownloadMovie = ({
   list,
   ...props
 }) => {
+  const handleDownloadOnClick = torrent => () => {
+    // todo: dispatch action for downloading torrent
+  }
+
   return (
     <Modal
       {...props}
@@ -17,6 +21,7 @@ const ModalDownloadMovie = ({
       body={(
         <TorrentList
           list={list}
+          downloadHandler={handleDownloadOnClick}
         />
       )}
     />

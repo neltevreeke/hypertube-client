@@ -3,3 +3,34 @@
 .component {
   // Empty
 }
+
+.sectionTitle {
+  color: $color-primary;
+  display: flex;
+  flex-direction: row;
+
+  p {
+    width: 25%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.torrent {
+  color: white;
+  display: flex;
+  flex-direction: row;
+
+  p {
+    width: 25%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.icon {
+  transform: translateY(3px);
+  font-size: 1rem;
+  color: $color-primary;
+  cursor: pointer;
+}
