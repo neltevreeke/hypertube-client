@@ -1,4 +1,4 @@
-// import * as torrentsApi from 'api/torrent'
+import * as torrentsApi from 'api/torrent'
 import * as ActionTypes from 'constants/ActionType'
 
 export const downloadTorrent = torrent => async dispatch => {
@@ -7,10 +7,18 @@ export const downloadTorrent = torrent => async dispatch => {
   })
 
   try {
-    // setup socket server???
+    // eslint-disable-next-line no-console
+    console.log(torrent)
 
-    // await torrentsApi.postTorrent(torrent)
+    await torrentsApi.getTorrentStream(torrent.hash)
 
+    // todo: setup socket server???
+
+    // on success stream movie
+
+    dispatch({
+      type: ActionTypes.DOWNLOAD_TORRENT_SUCCESS
+    })
   } catch (e) {
     dispatch({
       type: ActionTypes.DOWNLOAD_TORRENT_ERROR,
