@@ -8,7 +8,8 @@ const MovieDetailsHeading = ({
   coverPoster,
   title,
   youtubeLink,
-  torrents
+  torrents,
+  movieId
 }) => {
   const handleTrailerOnClick = link => () => {
     window.open(`https://youtube.com/watch?v=${link}`, '_blank')
@@ -23,6 +24,7 @@ const MovieDetailsHeading = ({
         isOpen={isOpen}
         onExited={onExited}
         hideModal={hideModalMovieDownload}
+        movieId={movieId}
         list={torrents}
       />
     )

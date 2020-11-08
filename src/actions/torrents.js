@@ -7,11 +7,7 @@ export const downloadTorrent = torrent => async dispatch => {
   })
 
   try {
-    // eslint-disable-next-line no-console
-    console.log(torrent)
-
-    // todo: get torrent movieid here for getTorrentStream (torrent.movieId)
-    await torrentsApi.getTorrentStream(torrent.hash)
+    await torrentsApi.getTorrentStream(torrent.hash, torrent.id)
 
     // todo: setup socket server???
 

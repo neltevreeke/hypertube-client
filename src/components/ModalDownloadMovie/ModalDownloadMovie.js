@@ -6,12 +6,13 @@ import { downloadTorrent } from 'actions/torrents'
 
 const ModalDownloadMovie = ({
   list,
+  movieId,
   ...props
 }) => {
   const dispatch = useDispatch()
 
   const handleDownloadOnClick = torrent => () => {
-    // todo: dispatch action for downloading torrent
+    torrent.id = movieId
 
     dispatch(downloadTorrent(torrent))
   }

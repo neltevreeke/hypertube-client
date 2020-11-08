@@ -41,6 +41,7 @@ const MovieDetails = () => {
           title={movieDetails.title_english}
           youtubeLink={movieDetails.yt_trailer_code}
           torrents={movieDetails.torrents}
+          movieId={movieDetails.id}
         />
         <div className={styles.content}>
           <div className={styles.movieInformation}>
